@@ -87,6 +87,7 @@ if (!isset($_SESSION["pelanggan"])) {
           </div>
         </div>
     </div>
+    <!-- denda -->
     <div class="row">
         <div class="panel panel-info">
           <div class="panel-heading"><h3 class="text-center">Riwayat Denda</h3></div>
@@ -107,18 +108,29 @@ if (!isset($_SESSION["pelanggan"])) {
                     </thead>
                     <tbody>
                         <?php while ($data = $query->fetch_assoc()): ?>
-                            <tr>
-                                <td><?=$no++?></td>
-                                <td><?=$data['jaminan']?></td>
-                                <td><?=date("d-m-Y H:i:s", strtotime($data['tgl_ambil']))?></td>
-                                <td><?=date("d-m-Y H:i:s", strtotime($data['tgl_kembali']))?></td>
-                                <td>Rp.<?=number_format($data['total_harga'])?>,-</td>
-                                <td>Rp.<?=number_format($data['denda'])?>,-</td>
-                                <td>
-                                  <a href="?page=detail&id=<?= $data['id_transaksi'] ?>" class="btn btn-warning btn-xs">Lihat Transaksi</a>
-                                </td>
-                            </tr>
-                        <?php endwhile ?>
+                                <?php
+                                    $dueDate = strtotime($data['tgl_ambil']);
+                                    $returnDate = strtotime($data['tgl_kembali']);
+                                    $daysLate = max(0, floor(($returnDate - $dueDate) / (60 * 60 * 24))); // Calculate days late, minimum is 0
+                                    $penaltyPerDay = 40000; // Penalty amount per day
+                                    $penaltyAmount = $daysLate > 5 ? $penaltyPerDay * $daysLate : 0; // Apply penalty if more than 5 days late
+                                    $totalDenda = number_format($penaltyAmount, 2); // Format penalty amount
+                                ?>
+
+                                <tr>
+                                    <td><?=$no++?></td>
+                                    <td><?=$data['jaminan']?></td>
+                                    <td><?=date("d-m-Y H:i:s", strtotime($data['tgl_ambil']))?></td>
+                                    <td><?=date("d-m-Y H:i:s", strtotime($data['tgl_kembali']))?></td>
+                                    <td>Rp.<?=number_format($data['total_harga'])?>,-</td>
+                                    <td>Rp.<?=$totalDenda?>,-</td>
+                                    <td>
+                                        <a href="?page=detail&id=<?= $data['id_transaksi'] ?>" class="btn btn-warning btn-xs">Lihat Transaksi</a>
+                                    </td>
+                                </tr>
+                            <?php endwhile ?>
+
+
                     </tbody>
                 </table>
             <?php endif ?>

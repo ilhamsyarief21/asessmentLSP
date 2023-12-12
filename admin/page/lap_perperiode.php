@@ -9,7 +9,7 @@ if (isset($_GET["action"])) {
 		$r = $query->fetch_assoc();
 		$sql .= " SET tgl_kembali='$now', status='1'";
 		$connection->query("UPDATE mobil SET status='1' WHERE id_mobil=".$r["id_mobil"]);
-		$connection->query("UPDATE supir SET status='1' WHERE id_supir=".$r["id_supir"]);
+		$connection->query("UPDATE fotografer SET status='1' WHERE id_fotografer=".$r["id_fotografer"]);
 	}
 	$sql .= " WHERE id_transaksi=$_GET[key]";
 	if ($connection->query($sql)) {

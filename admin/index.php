@@ -58,7 +58,7 @@ if (!isset($_SESSION["admin"])) {
                             <li><a href="?page=admin">Admin</a></li>
                             <li><a href="?page=jenis">Jenis</a></li>
                             <li><a href="?page=mobil">Kamera</a></li>
-                            <li><a href="?page=supir">Pemilik Kamera</a></li>
+                            <li><a href="?page=fotografer">Pemilik Kamera</a></li>
                             <li><a href="?page=pelanggan">Pelanggan</a></li>
                             <li><a href="?page=transaksi">Transaksi</a></li>
                             <li><a href="?page=pengembalian">Pengembalian</a></li>

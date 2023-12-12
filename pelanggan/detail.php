@@ -13,7 +13,7 @@ if (!isset($_SESSION["pelanggan"])) {
 							?>
 							<?php while ($r = $query->fetch_assoc()): ?>
 								<tr>
-									<th>Mobil</th>
+									<th>Kamera</th>
 									<td>: <?=$r['nama_mobil']?></td>
 								</tr>
 								<tr>
@@ -50,8 +50,12 @@ if (!isset($_SESSION["pelanggan"])) {
 								</tr>
 								<tr>
 									<th>Kembali</th>
-									<td>: <span class="label label-<?=($r['status']) ? "success" : "danger"?>"><?=($r['status']) ? "Sudah" : "Belum"?></span></td>
+									<td>: <span class="label label-<?= ($r['tgl_kembali'] !== null) ? "success" : "danger" ?>">
+											<?= ($r['tgl_kembali'] !== null) ? "Sudah" : "Belum" ?>
+										</span>
+									</td>
 								</tr>
+
 								<tr>
 									<th>Pembatalan</th>
 									<td>: <span class="label label-<?=($r['pembatalan']) ? "danger" : "success"?>"><?=($r['pembatalan']) ? "Ya" : "Tidak"?></span></td>

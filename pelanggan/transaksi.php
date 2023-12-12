@@ -5,6 +5,8 @@ if (!isset($_SESSION["pelanggan"])) {
 }
 ?>
 
+
+
 <div class="panel panel-info">
     <div class="panel-heading"><h3 class="text-center">Sewa</h3></div>
     <div class="panel-body">
@@ -62,8 +64,8 @@ if (!isset($_SESSION["pelanggan"])) {
                 </div>
             </div>
             <div class="form-group">
-                <label for="status">Pakai supir?</label>
-                <?php $query = $connection->query("SELECT id_supir FROM supir WHERE status='1' LIMIT 1"); if ($query->num_rows == 0): ?>
+                <label for="status">Pakai fotografer?</label>
+                <?php $query = $connection->query("SELECT id_fotografer FROM fotografer WHERE status='1' LIMIT 1"); if ($query->num_rows == 0): ?>
                   <input type="text" class="form-control" disabled value="Maaf saat ini supir belum tersedia...">
                   <input type="hidden" name="status" value="0">
                 <?php else: ?>
@@ -77,7 +79,7 @@ if (!isset($_SESSION["pelanggan"])) {
                 <label for="jaminan">Jaminan</label>
                 <select name="jaminan" class="form-control">
                     <option value="STNK">STNK</option>
-                    <option value="Sertifikat Rumah">Sertifikat Rumah</option>
+                    <option value="KTP">KTP</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-info btn-block">NEXT!</button>
@@ -103,3 +105,6 @@ document.getElementById('thn').addEventListener('change', function() {
     }
 });
 </script>
+
+
+

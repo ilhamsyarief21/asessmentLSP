@@ -1,24 +1,24 @@
 <?php
 $update = (isset($_GET['action']) AND $_GET['action'] == 'update') ? true : false;
 if ($update) {
-	$sql = $connection->query("SELECT * FROM supir WHERE id_supir='$_GET[key]'");
+	$sql = $connection->query("SELECT * FROM fotografer WHERE id_fotografer='$_GET[key]'");
 	$row = $sql->fetch_assoc();
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($update) {
-		$sql = "UPDATE supir SET nama='$_POST[nama]', telp='$_POST[telp]', alamat='$_POST[alamat]', status='$_POST[status]' WHERE id_supir='$_GET[key]'";
+		$sql = "UPDATE fotografer SET nama='$_POST[nama]', telp='$_POST[telp]', alamat='$_POST[alamat]', status='$_POST[status]' WHERE id_fotografer='$_GET[key]'";
 	} else {
-		$sql = "INSERT INTO supir VALUES (NULL, '$_POST[nama]', '$_POST[telp]', '$_POST[alamat]', '$_POST[status]')";
+		$sql = "INSERT INTO fotografer VALUES (NULL, '$_POST[nama]', '$_POST[telp]', '$_POST[alamat]', '$_POST[status]')";
 	}
   if ($connection->query($sql)) {
-    echo alert("Berhasil!", "?page=supir");
+    echo alert("Berhasil!", "?page=fotografer");
   } else {
-		echo alert("Gagal!", "?page=supir");
+		echo alert("Gagal!", "?page=fotografer");
   }
 }
 if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
-  $connection->query("DELETE FROM supir WHERE id_supir='$_GET[key]'");
-	echo alert("Berhasil!", "?page=supir");
+  $connection->query("DELETE FROM fotografer WHERE id_fotografer='$_GET[key]'");
+	echo alert("Berhasil!", "?page=fotografer");
 }
 ?>
 <div class="row">
@@ -49,7 +49,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 	                </div>
 	                <button type="submit" class="btn btn-<?= ($update) ? "warning" : "info" ?> btn-block">Simpan</button>
 	                <?php if ($update): ?>
-										<a href="?page=supir" class="btn btn-info btn-block">Batal</a>
+										<a href="?page=fotografer" class="btn btn-info btn-block">Batal</a>
 									<?php endif; ?>
 	            </form>
 	        </div>
@@ -57,7 +57,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 	</div>
 	<div class="col-md-8">
 	    <div class="panel panel-info">
-	        <div class="panel-heading"><h3 class="text-center">DAFTAR SUPIR</h3></div>
+	        <div class="panel-heading"><h3 class="text-center">DAFTAR FOTOGRAFER</h3></div>
 	        <div class="panel-body">
 	            <table class="table table-condensed">
 	                <thead>
@@ -72,7 +72,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 	                </thead>
 	                <tbody>
 	                    <?php $no = 1; ?>
-	                    <?php if ($query = $connection->query("SELECT * FROM supir")): ?>
+	                    <?php if ($query = $connection->query("SELECT * FROM fotografer")): ?>
 	                        <?php while($row = $query->fetch_assoc()): ?>
 	                        <tr>
 	                            <td><?=$no++?></td>
@@ -82,8 +82,8 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 															<td><span class="label label-<?=($row['status']) ? "success" : "danger" ?>"><?=($row['status']) ? "Tersedia" : "Tidak Tersedia" ?></span></td>
 	                            <td class="hidden-print">
 	                                <div class="btn-group">
-	                                    <a href="?page=supir&action=update&key=<?=$row['id_supir']?>" class="btn btn-warning btn-xs">Edit</a>
-	                                    <a href="?page=supir&action=delete&key=<?=$row['id_supir']?>" class="btn btn-danger btn-xs">Hapus</a>
+	                                    <a href="?page=fotografer&action=update&key=<?=$row['id_fotografer']?>" class="btn btn-warning btn-xs">Edit</a>
+	                                    <a href="?page=fotografer&action=delete&key=<?=$row['id_fotografer']?>" class="btn btn-danger btn-xs">Hapus</a>
 	                                </div>
 	                            </td>
 	                        </tr>

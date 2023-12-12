@@ -21,13 +21,13 @@ function alert($msg, $to = null) {
 
 $query = $connection->query("SELECT a.id_mobil, a.id_transaksi, (DATEDIFF(NOW(), a.tgl_ambil)) AS tgl FROM transaksi a WHERE a.status='0'");
 while ($data = $query->fetch_assoc()) {
-    if ($data["tgl"] >= 0 && isset($data["id_mobil"]) && isset($data["id_transaksi"]) && isset($data["id_supir"])) {
+    if ($data["tgl"] >= 0 && isset($data["id_mobil"]) && isset($data["id_transaksi"]) && isset($data["id_fotografer"])) {
         $connection->query("UPDATE mobil SET status='0' WHERE id_mobil={$data['id_mobil']}");
-        $q = $connection->query("SELECT id_supir FROM detail_transaksi WHERE id_transaksi={$data['id_transaksi']}");
+        $q = $connection->query("SELECT id_fotografer FROM detail_transaksi WHERE id_transaksi={$data['id_transaksi']}");
         if ($q->num_rows) {
             $supirData = $q->fetch_assoc();
-            $idSupir = $supirData['id_supir'];
-            $connection->query("UPDATE supir SET status='0' WHERE id_supir={$idSupir}");
+            $idSupir = $supirData['id_fotografer'];
+            $connection->query("UPDATE supir SET status='0' WHERE id_fotografer={$idSupir}");
         }
     }
 }
@@ -37,11 +37,11 @@ while ($data = $query->fetch_assoc()) {
   if ($data["tempo"] > 3) {
     $connection->query("UPDATE transaksi SET pembatalan='1' WHERE id_transaksi={$data['id_transaksi']}");
     $connection->query("UPDATE mobil SET status='1' WHERE id_mobil={$data['id_mobil']}");
-    $q = $connection->query("SELECT id_supir FROM detail_transaksi WHERE id_transaksi={$data['id_transaksi']}");
+    $q = $connection->query("SELECT id_fotografer FROM detail_transaksi WHERE id_transaksi={$data['id_transaksi']}");
     if ($q->num_rows) {
       $supirData = $q->fetch_assoc();
-      $idSupir = $supirData['id_supir'];
-      @$connection->query("UPDATE supir SET status='1' WHERE id_supir={$idSupir}");
+      $idSupir = $supirData['id_fotografer'];
+      @$connection->query("UPDATE fotografer SET status='1' WHERE id_fotografer={$idSupir}");
       @$connection->query("DELETE FROM detail_transaksi WHERE id_transaksi={$data['id_transaksi']}");
     }
   }

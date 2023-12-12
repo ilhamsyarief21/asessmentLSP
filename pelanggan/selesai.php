@@ -35,21 +35,21 @@ if ($sql->num_rows) {
 $query = $connection->query("SELECT * FROM mobil WHERE id_mobil=$_POST[id_mobil]");
 $data  = $query->fetch_assoc();
 
-$hargasupir  = 0;
+$hargafotografer  = 0;
 $id          = $_SESSION["pelanggan"]["id"]; // id user yang sedang login
 $jatuhtempo  = date('Y-m-d H:i:s', strtotime('+3 hours')); //jam skrg + 3 jam
-$totalbayar  = $hargasupir + ($data["harga"] * $_POST["lama"]);
-if ($_POST["status"]) $hargasupir = (30000 * $_POST["lama"]);
+$totalbayar  = $hargafotografer + ($data["harga"] * $_POST["lama"]);
+if ($_POST["status"]) $hargafotografer = (30000 * $_POST["lama"]);
 
 $connection->query("INSERT INTO transaksi (id_pelanggan, id_mobil, tgl_sewa, tgl_ambil, tgl_kembali, lama, total_harga, status, jaminan, jatuh_tempo, konfirmasi, pembatalan, statuspembayaran, kode) VALUES ($id, $_POST[id_mobil], '$now', '$tgl_ambil', NULL, $_POST[lama], $totalbayar, '0', '$_POST[jaminan]', '$jatuhtempo', '0', '0', '0', '')");
 
 $idtransaksi = $connection->insert_id;
 
 if ($_POST["status"]) {
-    $hargasupir = 30000;
-    $supir      = $connection->query("SELECT id_supir FROM supir WHERE status='1' LIMIT 1");
-    $s          = $supir->fetch_assoc();
-    $connection->query("INSERT INTO detail_transaksi VALUES (NULL, $idtransaksi, $s[id_supir], $hargasupir)");
+    $hargafotografer = 30000;
+    $fotografer      = $connection->query("SELECT id_fotografer FROM fotografer WHERE status='1' LIMIT 1");
+    $s          = $fotografer->fetch_assoc();
+    $connection->query("INSERT INTO detail_transaksi VALUES (NULL, $idtransaksi, $s[id_fotografer], $hargafotografer)");
 }
 
 // Generate kode acak
@@ -77,8 +77,8 @@ $connection->query("UPDATE transaksi SET kode = '$kode_transaksi' WHERE id_trans
                     <td>: Rp.<?=number_format($data["harga"])?>,-/hari</td>
                 </tr>
                 <tr>
-                    <th>Harga Supir</th>
-                    <td>: Rp.<?=number_format($hargasupir)?>,-/hari</td>
+                    <th>Harga Fotografer</th>
+                    <td>: Rp.<?=number_format($hargafotografer)?>,-/hari</td>
                 </tr>
                 <tr>
                     <th>Lama Sewa</th>
@@ -111,4 +111,4 @@ $connection->query("UPDATE transaksi SET kode = '$kode_transaksi' WHERE id_trans
         <p>
             Transaksi pembelian anda telah berhasil<br>
             Silahkan anda membayar tagihan anda dengan cara transfer via Bank BRI di nomor Rekening : <br>
-            <strong>(0986-01-025805-53-8 a/n PT.Kameraku)</strong> untuk menyelesaikan pembayaran. dan untuk uang muka minimal setengah da
+            <strong>(0986-01-025805-53-8 a/n PT.Kameraku)</strong> untuk menyelesaikan pembayaran. Silahkan melakukan pembayran, Terimakasih
