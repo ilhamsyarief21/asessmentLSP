@@ -2,7 +2,7 @@
 date_default_timezone_set('Asia/Jakarta');
 $now = date("Y-m-d H:i:s");
 
-if (!$connection = new Mysqli("localhost", "root", "", "mobil")) {
+if (!$connection = new Mysqli("localhost", "root", "", "kamerakuLSP")) {
   echo "<h3>ERROR: Koneksi database gagal!</h3>";
 }
 

@@ -24,12 +24,12 @@ $_PAGE = isset($_GET['page']) ? $_GET['page'] : 'home';
     <script type="text/javascript" src="assets/fancybox/source/helpers/jquery.fancybox-thumbs.js"></script><!-- Optional, Add mousewheel effect -->
     <script type="text/javascript" src="assets/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
             <style>
-            html, body {
+                html, body {
                 height: 100%;
                 margin: 0;
                 padding: 0;
+                font-family: 'Poppins', sans-serif;
             }
-
             .container {
                 width: 100%;
                 min-height: 100%;
@@ -50,7 +50,7 @@ $_PAGE = isset($_GET['page']) ? $_GET['page'] : 'home';
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">
-                        <img src="assets/img/kameraku.png" alt="Kameraku! Logo" width="10%">
+                        <img src="assets/img/kameraku.png" alt="Kameraku! Logo" width="30%">
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

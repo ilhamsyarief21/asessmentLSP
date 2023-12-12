@@ -1,3 +1,33 @@
+<style>
+    /* Center the form vertically and horizontally */
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+    }
+
+    .col-md-10 {
+        background-color: #f8f9fa; /* Optional: add a background color for better visibility */
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 1100px; /* Optional: Set a max-width for the form */
+		margin-bottom: 80px;
+    }
+
+    /* Adjustments for smaller screens */
+    @media (max-width: 768px) {
+        .col-md-8 {
+            max-width: 100%;
+        }
+    }
+</style>
+
+
 <?php
 
 $update = ((isset($_GET['action']) AND $_GET['action'] == 'update') OR isset($_SESSION["pelanggan"])) ? true : false;
@@ -30,7 +60,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 ?>
 <div class="container">
 		<div class="col-md-2"></div>
-		<div class="col-md-8">
+		<div class="col-md-10">
 			<div class="page-header">
 				<?php if ($update): ?>
 					<h2>Update <small>data pelanggan!</small></h2>

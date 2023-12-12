@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="text-center">LAPORAN PENYEWAAN PERMOBIL</h3>
+                    <h3 class="text-center">LAPORAN PENYEWAAN PERKAMERA</h3>
                     <br>
                     <h4 class="text-center">tgl: <?= $_POST["start"] . " s/d " . $_POST["stop"] ?></h4>
                 </div>
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <table>
                                 <tr>
                                     <td>
-                                        <label>Nomor Mobil</label>
+                                        <label>Nomor Seri Kamera</label>
                                     </td>
                                     <td>&nbsp;:&nbsp;
                                         <input type="text" value="<?= $row['no_mobil'] ?>" class="form-control" disabled="on"><br>
@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label>Nama Mobil</label>
+                                        <label>Nama Kamera</label>
                                     </td>
                                     <td>&nbsp;:&nbsp;
                                         <input type="text" value="<?= $row['nama_mobil'] ?>" class="form-control" disabled="on"><br>

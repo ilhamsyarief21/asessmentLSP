@@ -31,36 +31,69 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mobil</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Add Poppins font from Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <style>
         body {
             margin-top: 40px;
-            background-image:url(assets/img/bg.jpg);
-            background-size:cover;
+            background-image: url(assets/img/bb.jpg);
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Poppins', sans-serif; /* Apply Poppins font to the entire body */
+        }
+
+        .custom-width {
+            width: 150%;
+            height: 100%;
+            margin-right: 60px; /* Adjust the margin as needed */
+            margin-left: 130px; /* Adjust the margin as needed */
+        }
+
+        .panel {
+            width: 100%;
+        }
+
+        .panel-heading {
+            background-color: #5bc0de; /* Updated color: Green */
+            color: #fff;
+        }
+
+        .panel-footer {
+            background-color: #5bc0de; /* Updated color: Blue */
+            color: #fff;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <div class="panel panel-info">
-                    <div class="panel-heading"><h3 class="text-center"><b>Kameraku </b></small></small></h3></div>
-                    <div class="panel-body">
-                        <form action="<?=$_SERVER['REQUEST_URI']?>" method="POST">
-                            <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" name="username" class="form-control" id="username" placeholder="username" autofocus="on">
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" name="password" class="form-control" id="password" placeholder="Password">
-                            </div>
-                            <button type="submit" class="btn btn-info btn-block">Login</button>
-                        </form>
-                    </div>
-                    <div class="panel-footer">
-                      Belum punya akun? <a href="index.php?page=daftar">daftar sekarang.</a>
+            <div class="col-md-4 custom-width">
+                <div class="col-md-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading"><h3 class="text-center"><b>Kameraku</b></h3></div>
+                        <div class="panel-body">
+                            <form action="<?=$_SERVER['REQUEST_URI']?>" method="POST">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" name="username" class="form-control" id="username" placeholder="Username" autofocus="on">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                                </div>
+                                <button type="submit" class="btn btn-info btn-block">Login</button>
+                            </form>
+                        </div>
+                        <div class="panel-footer">
+                            Belum punya akun? <a href="index.php?page=daftar">Daftar sekarang.</a>
+                        </div>
                     </div>
                 </div>
             </div>

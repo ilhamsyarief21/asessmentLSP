@@ -65,11 +65,11 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 											</select>
 	                </div>
 	                <div class="form-group">
-	                    <label for="no_mobil">No Mobil</label>
+	                    <label for="no_mobil">No Registrasi Kamera</label>
 	                    <input type="text" name="no_mobil" class="form-control" <?= (!$update) ?: 'value="'.$row["no_mobil"].'"' ?>>
 	                </div>
 	                <div class="form-group">
-	                    <label for="nama_mobil">Nama Mobil</label>
+	                    <label for="nama_mobil">Nama Kamera</label>
 	                    <input type="text" name="nama_mobil" class="form-control" <?= (!$update) ?: 'value="'.$row["nama_mobil"].'"' ?>>
 	                </div>
 	                <div class="form-group">
@@ -105,14 +105,14 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 	</div>
 	<div class="col-md-8">
 	    <div class="panel panel-info">
-	        <div class="panel-heading"><h3 class="text-center">DAFTAR MOBIL</h3></div>
+	        <div class="panel-heading"><h3 class="text-center">DAFTAR KAMERA</h3></div>
 	        <div class="panel-body">
 	            <table class="table table-condensed">
 	                <thead>
 	                    <tr>
 	                        <th>No</th>
 	                        <th>Jenis</th>
-	                        <th>No Mobil</th>
+	                        <th>No Registrasi Kamera</th>
 	                        <th>Nama</th>
 	                        <th>Merk</th>
 	                        <th>Harga</th>

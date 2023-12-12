@@ -10,7 +10,7 @@ if (!isset($_SESSION["admin"])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mobil</title>
+    <title>Kameraku</title>
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <script src="../assets/js/jquery.min.js"></script>
     <!-- Optional, Add fancyBox for media, buttons, thumbs -->
@@ -23,9 +23,23 @@ if (!isset($_SESSION["admin"])) {
     <script type="text/javascript" src="../assets/fancybox/source/helpers/jquery.fancybox-thumbs.js"></script><!-- Optional, Add mousewheel effect -->
     <script type="text/javascript" src="../assets/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
     <style>
-        body {
-            margin-top: 40px;
-        }
+       html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                font-family: 'Poppins', sans-serif;
+            }
+            .container {
+                width: 100%;
+                min-height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .row {
+                flex-grow: 1;
+            }
+               
     </style>
 </head>
 <body>
@@ -47,6 +61,7 @@ if (!isset($_SESSION["admin"])) {
                             <li><a href="?page=supir">Pemilik Kamera</a></li>
                             <li><a href="?page=pelanggan">Pelanggan</a></li>
                             <li><a href="?page=transaksi">Transaksi</a></li>
+                            <li><a href="?page=pengembalian">Pengembalian</a></li>
                           
                           </ul>
                         </li>
@@ -54,7 +69,7 @@ if (!isset($_SESSION["admin"])) {
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Laporan <span class="caret"></span></a>
                           <ul class="dropdown-menu">
                             <li><a href="?page=lap_konfirmasi">Konfirmasi</a></li>
-                            <li><a href="?page=lap_permobil">Penyewaan Permobil</a></li>
+                            <li><a href="?page=lap_permobil">Penyewaan Perkamera</a></li>
                             <li><a href="?page=lap_seringdenda">Sering Denda</a></li>
                             <li><a href="?page=lap_perperiode">Penyewaan Perperiode</a></li>
                             <li><a href="?page=lap_terlaris">Terlaris</a></li>
