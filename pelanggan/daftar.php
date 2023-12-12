@@ -29,35 +29,112 @@
 
 
 <?php
-
 $update = ((isset($_GET['action']) AND $_GET['action'] == 'update') OR isset($_SESSION["pelanggan"])) ? true : false;
 if ($update) {
-	$sql = $connection->query("SELECT * FROM pelanggan WHERE id_pelanggan='$_SESSION[pelanggan][id]'");
-	$row = $sql->fetch_assoc();
+    $sql = $connection->query("SELECT * FROM pelanggan WHERE id_pelanggan='$_SESSION[pelanggan][id]'");
+    $row = $sql->fetch_assoc();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	if ($update) {
-		$sql = "UPDATE pelanggan SET no_ktp='$_POST[no_ktp]', nama='$_POST[nama]', email='$_POST[email]', no_telp='$_POST[no_telp]', alamat='$_POST[alamat]', username='$_POST[username]'";
-		if ($_POST["password"] != "") {
-			$sql .= ", password='".md5($_POST["password"])."'";
-		}
-		$sql .= " WHERE id_pelanggan='$_SESSION[pelanggan][id]'";
-	} else {
-		$sql = "INSERT INTO pelanggan VALUES (NULL, '$_POST[no_ktp]', '$_POST[nama]', '$_POST[email]', '$_POST[no_telp]', '$_POST[alamat]', '$_POST[username]', '".md5($_POST["password"])."')";
-	}
-  if ($connection->query($sql)) {
-    echo alert("Berhasil! Silahkan login", "login.php");
-  } else {
-		echo alert("Gagal!", "?page=pelanggan");
-  }
+    $no_ktp = $_POST["no_ktp"];
+    $nama = $_POST["nama"];
+    $email = $_POST["email"];
+    $no_telp = $_POST["no_telp"];
+    $alamat = $_POST["alamat"];
+    $username = $_POST["username"];
+    $password = md5($_POST["password"]);
+
+    if ($update) {
+        $sql = "UPDATE pelanggan SET no_ktp=?, nama=?, email=?, no_telp=?, alamat=?, username=?";
+        if ($_POST["password"] != "") {
+            $sql .= ", password=?";
+        }
+        $sql .= " WHERE id_pelanggan=?";
+    } else {
+        $sql = "INSERT INTO pelanggan (no_ktp, nama, email, no_telp, alamat, username, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    }
+
+    $stmt = $connection->prepare($sql);
+
+    if ($update) {
+        if ($_POST["password"] != "") {
+            $stmt->bind_param("ssssssi", $no_ktp, $nama, $email, $no_telp, $alamat, $username, $password, $_SESSION["pelanggan"]["id"]);
+        } else {
+            $stmt->bind_param("sssssi", $no_ktp, $nama, $email, $no_telp, $alamat, $username, $_SESSION["pelanggan"]["id"]);
+        }
+    } else {
+        $stmt->bind_param("sssssss", $no_ktp, $nama, $email, $no_telp, $alamat, $username, $password);
+    }
+
+    if ($stmt->execute()) {
+        echo alert("Berhasil! Silahkan login", "login.php");
+    } else {
+        echo alert("Gagal!", "?page=pelanggan");
+    }
+
+    $stmt->close();
 }
 
 if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
-  $connection->query("DELETE FROM pelanggan WHERE id_pelanggan='$_SESSION[pelanggan][id]'");
-	echo alert("Berhasil!", "?page=pelanggan");
+    $connection->query("DELETE FROM pelanggan WHERE id_pelanggan='$_SESSION[pelanggan][id]'");
+    echo alert("Berhasil!", "?page=pelanggan");
 }
 ?>
+<!-- Form HTML -->
+<?php
+$update = ((isset($_GET['action']) AND $_GET['action'] == 'update') OR isset($_SESSION["pelanggan"])) ? true : false;
+if ($update) {
+    $sql = $connection->query("SELECT * FROM pelanggan WHERE id_pelanggan='$_SESSION[pelanggan][id]'");
+    $row = $sql->fetch_assoc();
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $no_ktp = $_POST["no_ktp"];
+    $nama = $_POST["nama"];
+    $email = $_POST["email"];
+    $no_telp = $_POST["no_telp"];
+    $alamat = $_POST["alamat"];
+    $username = $_POST["username"];
+    $password = md5($_POST["password"]);
+
+    if ($update) {
+        $sql = "UPDATE pelanggan SET no_ktp=?, nama=?, email=?, no_telp=?, alamat=?, username=?";
+        if ($_POST["password"] != "") {
+            $sql .= ", password=?";
+        }
+        $sql .= " WHERE id_pelanggan=?";
+    } else {
+        $sql = "INSERT INTO pelanggan (no_ktp, nama, email, no_telp, alamat, username, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    }
+
+    $stmt = $connection->prepare($sql);
+
+    if ($update) {
+        if ($_POST["password"] != "") {
+            $stmt->bind_param("ssssssi", $no_ktp, $nama, $email, $no_telp, $alamat, $username, $password, $_SESSION["pelanggan"]["id"]);
+        } else {
+            $stmt->bind_param("sssssi", $no_ktp, $nama, $email, $no_telp, $alamat, $username, $_SESSION["pelanggan"]["id"]);
+        }
+    } else {
+        $stmt->bind_param("sssssss", $no_ktp, $nama, $email, $no_telp, $alamat, $username, $password);
+    }
+
+    if ($stmt->execute()) {
+        echo alert("Berhasil! Silahkan login", "login.php");
+    } else {
+        echo alert("Gagal!", "?page=pelanggan");
+    }
+
+    $stmt->close();
+}
+
+if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
+    $connection->query("DELETE FROM pelanggan WHERE id_pelanggan='$_SESSION[pelanggan][id]'");
+    echo alert("Berhasil!", "?page=pelanggan");
+}
+?>
+<!-- Form HTML -->
+
 <div class="container">
 		<div class="col-md-2"></div>
 		<div class="col-md-10">
