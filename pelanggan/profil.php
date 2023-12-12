@@ -129,42 +129,42 @@ if (!isset($_SESSION["pelanggan"])) {
         </div>
     </div>
     <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Handle form submission for pengembalian
-    if (isset($_POST["kembalikan"])) {
-        $kode = $_POST["kode"];
-        $tgl_kembali = date("Y-m-d H:i:s"); // Ambil tanggal dan waktu hari ini
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Handle form submission for pengembalian
+            if (isset($_POST["kembalikan"])) {
+                $kode = $_POST["kode"];
+                $tgl_kembali = date("Y-m-d H:i:s"); // Ambil tanggal dan waktu hari ini
 
-        // Update tanggal pengembalian dalam tabel transaksi
-        $queryUpdate = "UPDATE transaksi SET tgl_kembali = '$tgl_kembali' WHERE kode = '$kode' AND tgl_kembali IS NULL";
-        $connection->query($queryUpdate);
+                // Update tanggal pengembalian dalam tabel transaksi
+                $queryUpdate = "UPDATE transaksi SET tgl_kembali = '$tgl_kembali' WHERE kode = '$kode' AND tgl_kembali IS NULL";
+                $connection->query($queryUpdate);
 
-        // Tambahkan log atau proses lain yang diperlukan setelah pengembalian
+                // Tambahkan log atau proses lain yang diperlukan setelah pengembalian
 
-        echo "Mobil telah dikembalikan pada " . date("Y-m-d H:i:s") . ". Terima kasih!";
-    }
-}
-?>
+                echo "Mobil telah dikembalikan pada " . date("Y-m-d H:i:s") . ". Terima kasih!";
+            }
+        }
+        ?>
 
 
-<div class="row">
-    <div class="panel panel-info">
-        <div class="panel-heading"><h3 class="text-center">Pengembalian Kamera</h3></div>
-        <div class="panel-body">
-            <!-- Formulir pengembalian -->
-            <form method="post" action="" id="kembalikanForm">
-                <div class="form-group">
-                    <label for="kode">Masukkan Kode Transaksi</label>
-                    <input type="text" name="kode" class="form-control" pattern="[0-9]+" title="Hanya angka yang diperbolehkan" required>
+        <div class="row">
+            <div class="panel panel-info">
+                <div class="panel-heading"><h3 class="text-center">Pengembalian Kamera</h3></div>
+                <div class="panel-body">
+                    <!-- Formulir pengembalian -->
+                    <form method="post" action="" id="kembalikanForm">
+                        <div class="form-group">
+                            <label for="kode">Masukkan Kode Transaksi</label>
+                            <input type="text" name="kode" class="form-control" pattern="[0-9]+" title="Hanya angka yang diperbolehkan" required>
+                        </div>
+                        <button type="submit" name="kembalikan" class="btn btn-success">Kembalikan Mobil</button>
+                    </form>
                 </div>
-                <button type="submit" name="kembalikan" class="btn btn-success">Kembalikan Mobil</button>
-            </form>
+                <div class="panel-footer hidden-print">
+                    <a onClick="window.print();return false" class="btn btn-primary"><i class="glyphicon glyphicon-print"></i></a>
+                </div>
+            </div>
         </div>
-        <div class="panel-footer hidden-print">
-            <a onClick="window.print();return false" class="btn btn-primary"><i class="glyphicon glyphicon-print"></i></a>
-        </div>
-    </div>
-</div>
 
 <script>
 document.getElementById('kembalikanForm').addEventListener('submit', function() {
