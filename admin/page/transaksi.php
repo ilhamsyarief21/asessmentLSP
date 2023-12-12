@@ -35,14 +35,14 @@
 <body>
 
 <?php
-$query = $connection->query("SELECT t.id_transaksi, m.nama_mobil, t.lama, t.jaminan, t.total_harga, t.tgl_sewa, t.tgl_ambil, t.tgl_kembali, t.jatuh_tempo, t.status, t.konfirmasi, t.pembatalan, t.statuspembayaran FROM transaksi t JOIN pelanggan p ON t.id_pelanggan = p.id_pelanggan JOIN mobil m ON t.id_mobil = m.id_mobil");
+$query = $connection->query("SELECT t.id_transaksi, m.nama_kamera, t.lama, t.jaminan, t.total_harga, t.tgl_sewa, t.tgl_ambil, t.tgl_kembali, t.jatuh_tempo, t.status, t.konfirmasi, t.pembatalan, t.statuspembayaran FROM transaksi t JOIN pelanggan p ON t.id_pelanggan = p.id_pelanggan JOIN kameraku m ON t.id_kameraku = m.id_kameraku");
 ?>
 
 <table>
   <thead>
     <tr>
       <th>ID Transaksi</th>
-      <th>Nama Mobil</th>
+      <th>Nama Kamera</th>
       <th>Lama</th>
       <th>Jaminan</th>
       <th>Total Harga</th>
@@ -61,7 +61,7 @@ $query = $connection->query("SELECT t.id_transaksi, m.nama_mobil, t.lama, t.jami
     <?php while ($r = $query->fetch_assoc()): ?>
       <tr>
         <td><?= $r['id_transaksi'] ?></td>
-        <td><?= $r['nama_mobil'] ?></td>
+        <td><?= $r['nama_kamera'] ?></td>
         <td><?= $r['lama'] ?></td>
         <td><?= $r['jaminan'] ?></td>
         <td><?= $r['total_harga'] ?></td>

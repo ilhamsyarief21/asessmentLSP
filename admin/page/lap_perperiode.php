@@ -8,7 +8,7 @@ if (isset($_GET["action"])) {
 		$query = $connection->query("SELECT * FROM transaksi JOIN detail_transaksi USING(id_transaksi) WHERE id_transaksi=$_GET[key]");
 		$r = $query->fetch_assoc();
 		$sql .= " SET tgl_kembali='$now', status='1'";
-		$connection->query("UPDATE mobil SET status='1' WHERE id_mobil=".$r["id_mobil"]);
+		$connection->query("UPDATE kameraku SET status='1' WHERE id_kameraku=".$r["id_kameraku"]);
 		$connection->query("UPDATE fotografer SET status='1' WHERE id_fotografer=".$r["id_fotografer"]);
 	}
 	$sql .= " WHERE id_transaksi=$_GET[key]";
@@ -34,8 +34,8 @@ if (isset($_GET["action"])) {
 								<tr>
 										<th>No</th>
 										<th>Nama Pelanggan</th>
-										<th>Nama Mobil</th>
-										<th>Nomor Mobil</th>
+										<th>Nama Kamera</th>
+										<th>Nomor Kamera</th>
 										<th>Tanggal Sewa</th>
 										<th>Tanggal Ambil</th>
 										<th>Tanggal Kembali</th>
@@ -46,13 +46,13 @@ if (isset($_GET["action"])) {
 						</thead>
 						<tbody>
 								<?php $no = 1; ?>
-								<?php if ($query = $connection->query("SELECT * FROM transaksi t JOIN mobil m USING(id_mobil) JOIN pelanggan p ON t.id_pelanggan=p.id_pelanggan WHERE t.tgl_sewa BETWEEN '$_POST[start]' AND '$_POST[stop]'")): ?>
+								<?php if ($query = $connection->query("SELECT * FROM transaksi t JOIN kameraku m USING(id_kameraku) JOIN pelanggan p ON t.id_pelanggan=p.id_pelanggan WHERE t.tgl_sewa BETWEEN '$_POST[start]' AND '$_POST[stop]'")): ?>
 										<?php while($row = $query->fetch_assoc()): ?>
 										<tr>
 												<td><?=$no++?></td>
 												<td><?=$row['nama']?></td>
-												<td><?=$row['nama_mobil']?></td>
-												<td><?=$row['no_mobil']?></td>
+												<td><?=$row['nama_kamera']?></td>
+												<td><?=$row['no_kamera']?></td>
 												<td><?=date("d-m-Y H:i:s", strtotime($row['tgl_sewa']))?></td>
 												<td><?=($row['tgl_ambil']) ? date("d-m-Y H:i:s", strtotime($row['tgl_ambil'])) : "<b>Belum Diambil</b>" ?></td>
 												<td><?=($row['tgl_kembali']) ? date("d-m-Y H:i:s", strtotime($row['tgl_kembali'])) : "<b>Belum Dikembalikan</b>" ?></td>

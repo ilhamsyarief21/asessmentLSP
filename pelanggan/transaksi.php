@@ -11,7 +11,7 @@ if (!isset($_SESSION["pelanggan"])) {
     <div class="panel-heading"><h3 class="text-center">Sewa</h3></div>
     <div class="panel-body">
         <form action="?page=selesai" method="POST">
-            <input type="hidden" name="id_mobil" value="<?=$_GET["id"]?>">
+            <input type="hidden" name="id_kameraku" value="<?=$_GET["id"]?>">
             <div class="form-group">
                 <label for="lama">Lama Sewa</label>
                 <select name="lama" class="form-control">

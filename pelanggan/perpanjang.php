@@ -5,7 +5,7 @@ if (!isset($_SESSION["pelanggan"])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		$sql = $connection->query("SELECT t.lama, m.harga FROM transaksi t JOIN mobil m USING(id_mobil) WHERE t.id_transaksi=$_POST[_id]");
+		$sql = $connection->query("SELECT t.lama, m.harga FROM transaksi t JOIN kameraku m USING(id_kameraku) WHERE t.id_transaksi=$_POST[_id]");
 		$r = $sql->fetch_assoc();
 		$lama = $r["lama"] + $_POST["lama"];
 		$harga = $r["harga"] * $lama;

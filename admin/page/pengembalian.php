@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['return_code'])) {
 
         // You can perform additional actions or calculations here if needed
 
-        echo alert("Berhasil mengembalikan mobil dengan kode $return_code", "?page=pengembalian");
+        echo alert("Berhasil mengembalikan kamera dengan kode $return_code", "?page=pengembalian");
     } else {
         echo alert("Kode transaksi tidak valid", "?page=pengembalian");
     }
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['return_code'])) {
                         <label for="return_code">Kode Transaksi</label>
                         <input type="text" name="return_code" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn btn-info btn-block">Kembalikan Mobil</button>
+                    <button type="submit" class="btn btn-info btn-block">Kembalikan Kamera</button>
                 </form>
             </div>
         </div>

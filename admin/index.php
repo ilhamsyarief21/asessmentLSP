@@ -56,10 +56,10 @@ if (!isset($_SESSION["admin"])) {
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Input <span class="caret"></span></a>
                           <ul class="dropdown-menu">
                             <li><a href="?page=admin">Admin</a></li>
-                            <li><a href="?page=jenis">Jenis</a></li>
-                            <li><a href="?page=mobil">Kamera</a></li>
-                            <li><a href="?page=fotografer">Pemilik Kamera</a></li>
                             <li><a href="?page=pelanggan">Pelanggan</a></li>
+                            <li><a href="?page=jenis">Jenis Kamera</a></li>
+                            <li><a href="?page=kameraku">Kamera</a></li>
+                            <li><a href="?page=fotografer">Pemilik Kamera</a></li>
                             <li><a href="?page=transaksi">Transaksi</a></li>
                             <li><a href="?page=pengembalian">Pengembalian</a></li>
                           
@@ -69,7 +69,7 @@ if (!isset($_SESSION["admin"])) {
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Laporan <span class="caret"></span></a>
                           <ul class="dropdown-menu">
                             <li><a href="?page=lap_konfirmasi">Konfirmasi</a></li>
-                            <li><a href="?page=lap_permobil">Penyewaan Perkamera</a></li>
+                            <li><a href="?page=lap_perkamera">Penyewaan Perkamera</a></li>
                             <li><a href="?page=lap_seringdenda">Sering Denda</a></li>
                             <li><a href="?page=lap_perperiode">Penyewaan Perperiode</a></li>
                             <li><a href="?page=lap_terlaris">Terlaris</a></li>

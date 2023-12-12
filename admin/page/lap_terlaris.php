@@ -22,12 +22,12 @@
 						</thead>
 						<tbody>
 								<?php $no = 1; ?>
-								<?php if ($query = $connection->query("SELECT m.no_mobil, m.merk, m.nama_mobil, (SELECT COUNT(*) FROM transaksi WHERE id_mobil=t.id_mobil) AS jml FROM transaksi t JOIN mobil m USING(id_mobil) WHERE t.tgl_sewa BETWEEN '$_POST[start]' AND '$_POST[stop]'")): ?>
+								<?php if ($query = $connection->query("SELECT m.no_kamera, m.merk, m.nama_kamera, (SELECT COUNT(*) FROM transaksi WHERE id_kameraku=t.id_kameraku) AS jml FROM transaksi t JOIN kameraku m USING(id_kameraku) WHERE t.tgl_sewa BETWEEN '$_POST[start]' AND '$_POST[stop]'")): ?>
 										<?php while($row = $query->fetch_assoc()): ?>
 										<tr>
 												<td><?=$no++?></td>
-												<td><?=$row['nama_mobil']?></td>
-												<td><?=$row['no_mobil']?></td>
+												<td><?=$row['nama_kamera']?></td>
+												<td><?=$row['no_kamera']?></td>
 												<td><?=$row['merk']?></td>
 												<td><?=$row['jml']?></td>
 										</tr>

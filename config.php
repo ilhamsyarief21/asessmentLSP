@@ -2,7 +2,7 @@
 date_default_timezone_set('Asia/Jakarta');
 $now = date("Y-m-d H:i:s");
 
-if (!$connection = new Mysqli("localhost", "root", "", "kamerakuLSP")) {
+if (!$connection = new Mysqli("localhost", "root", "", "kamerakulsp")) {
   echo "<h3>ERROR: Koneksi database gagal!</h3>";
 }
 
@@ -19,10 +19,10 @@ function alert($msg, $to = null) {
   return "<script>alert('{$msg}');window.location='{$to}';</script>";
 }
 
-$query = $connection->query("SELECT a.id_mobil, a.id_transaksi, (DATEDIFF(NOW(), a.tgl_ambil)) AS tgl FROM transaksi a WHERE a.status='0'");
+$query = $connection->query("SELECT a.id_kameraku, a.id_transaksi, (DATEDIFF(NOW(), a.tgl_ambil)) AS tgl FROM transaksi a WHERE a.status='0'");
 while ($data = $query->fetch_assoc()) {
-    if ($data["tgl"] >= 0 && isset($data["id_mobil"]) && isset($data["id_transaksi"]) && isset($data["id_fotografer"])) {
-        $connection->query("UPDATE mobil SET status='0' WHERE id_mobil={$data['id_mobil']}");
+    if ($data["tgl"] >= 0 && isset($data["id_kameraku"]) && isset($data["id_transaksi"]) && isset($data["id_fotografer"])) {
+        $connection->query("UPDATE kameraku SET status='0' WHERE id_kameraku={$data['id_kameraku']}");
         $q = $connection->query("SELECT id_fotografer FROM detail_transaksi WHERE id_transaksi={$data['id_transaksi']}");
         if ($q->num_rows) {
             $supirData = $q->fetch_assoc();
@@ -32,11 +32,11 @@ while ($data = $query->fetch_assoc()) {
     }
 }
 
-$query = $connection->query("SELECT a.jatuh_tempo, a.id_transaksi, a.id_mobil, (TIMESTAMPDIFF(HOUR, a.tgl_sewa, NOW())) AS tempo FROM transaksi a WHERE a.konfirmasi='0'");
+$query = $connection->query("SELECT a.jatuh_tempo, a.id_transaksi, a.id_kameraku, (TIMESTAMPDIFF(HOUR, a.tgl_sewa, NOW())) AS tempo FROM transaksi a WHERE a.konfirmasi='0'");
 while ($data = $query->fetch_assoc()) {
   if ($data["tempo"] > 3) {
     $connection->query("UPDATE transaksi SET pembatalan='1' WHERE id_transaksi={$data['id_transaksi']}");
-    $connection->query("UPDATE mobil SET status='1' WHERE id_mobil={$data['id_mobil']}");
+    $connection->query("UPDATE kameraku SET status='1' WHERE id_kameraku={$data['id_kameraku']}");
     $q = $connection->query("SELECT id_fotografer FROM detail_transaksi WHERE id_transaksi={$data['id_transaksi']}");
     if ($q->num_rows) {
       $supirData = $q->fetch_assoc();

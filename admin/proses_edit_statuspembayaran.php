@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $connection->query("UPDATE transaksi SET statuspembayaran='$statuspembayaran' WHERE id_transaksi='$id_transaksi'");
 
   // Redirect ke halaman transaksi di dalam folder admin
-  header("Location: ../../car-rent/admin");
+  header("Location: ../../kamerakuLSP/admin");
   exit();
 }
 ?>

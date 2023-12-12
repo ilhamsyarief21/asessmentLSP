@@ -19,30 +19,30 @@
 
 
 
-<!-- Baris Mobil -->
+<!-- Baris Kamear -->
 <div class="row">
     <?php
-    $query = $connection->query("SELECT * FROM mobil JOIN jenis USING(id_jenis)");
+    $query = $connection->query("SELECT * FROM kameraku JOIN jenis USING(id_jenis)");
     while ($row = $query->fetch_assoc()):
     ?>
         <div class="col-xs-6 col-md-3">
-            <!-- Mobil Thumbnail -->
+            <!-- Kamera Thumbnail -->
             <div class="thumbnail">
-                <a href="assets/img/mobil/<?=$row['gambar']?>" class="fancybox">
-                    <img src="assets/img/mobil/<?=$row['gambar']?>" alt="<?=$row['nama_mobil']?>" style="height: 200px;">
+                <a href="assets/img/kamera/<?=$row['gambar']?>" class="fancybox">
+                    <img src="assets/img/kamera/<?=$row['gambar']?>" alt="<?=$row['nama_kamera']?>" style="height: 200px;">
                 </a>
                 <div class="caption text-center">
-                    <!-- Informasi Mobil -->
-                    <h4><?=$row["nama_mobil"]?></h4>
+                    <!-- Informasi Kamera -->
+                    <h4><?=$row["nama_kamera"]?></h4>
                     <h5>Rp.<?=$row["harga"]?>,- <?=$row["nama"]?> - <?=$row["merk"]?></h5>
-                    <h6><?=$row["no_mobil"]?></h6>
+                    <h6><?=$row["no_kamera"]?></h6>
                     <span class="label label-<?=($row['status']) ? "success" : "danger" ?>">
                         <?=($row['status']) ? "Tersedia" : "Tidak Tersedia" ?>
                     </span>
                     <p>
                         <!-- Tombol Sewa -->
                         <br>
-                        <a href="<?=($row['status']) ? "?page=transaksi&id=$row[id_mobil]" : "#" ?>" class="btn btn-primary" <?=($row['status']) ?: "disabled" ?>>Sewa Sekarang!</a>
+                        <a href="<?=($row['status']) ? "?page=transaksi&id=$row[id_kameraku]" : "#" ?>" class="btn btn-primary" <?=($row['status']) ?: "disabled" ?>>Sewa Sekarang!</a>
                     </p>
                 </div>
             </div>
