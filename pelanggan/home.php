@@ -6,7 +6,6 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <style>
-	
 </style>
 
 <div class="owl-carousel">
@@ -17,13 +16,18 @@
     <div class="item"><img src="assets/img/e.png" alt="Slide 5" style="width: 100%; height: auto;"></div>
 </div>
 
-
-
 <!-- Baris Kamear -->
 <div class="row">
     <?php
     $query = $connection->query("SELECT * FROM kameraku JOIN jenis USING(id_jenis)");
     while ($row = $query->fetch_assoc()):
+        // Cek apakah pelanggan telah melebihi batas transaksi
+        $idPelanggan = isset($_SESSION['id_pelanggan']) ? $_SESSION['id_pelanggan'] : null;
+        $batasTransaksi = 2; // Tetapkan batas transaksi
+        $jumlahTransaksiPelanggan = hitungJumlahTransaksiPelanggan($connection, $idPelanggan);
+
+        // Nonaktifkan tombol jika pelanggan telah melebihi batas transaksi
+        $isNonaktif = ($jumlahTransaksiPelanggan >= $batasTransaksi) ? "disabled" : "";
     ?>
         <div class="col-xs-6 col-md-3">
             <!-- Kamera Thumbnail -->
@@ -42,7 +46,7 @@
                     <p>
                         <!-- Tombol Sewa -->
                         <br>
-                        <a href="<?=($row['status']) ? "?page=transaksi&id=$row[id_kameraku]" : "#" ?>" class="btn btn-primary" <?=($row['status']) ?: "disabled" ?>>Sewa Sekarang!</a>
+                        <a href="<?=($row['status'] && !$isNonaktif) ? "?page=transaksi&id=$row[id_kameraku]" : "#" ?>" class="btn btn-primary" <?=($row['status'] && !$isNonaktif) ? "" : "disabled" ?>>Sewa Sekarang!</a>
                     </p>
                 </div>
             </div>
@@ -86,10 +90,22 @@
       $(".owl-carousel").owlCarousel({
          items: 1,
          autoplay: true,
-         autoplayTimeout: 5000, // Ganti dengan interval yang diinginkan (dalam milidetik)
+         autoplayTimeout: 5000,
          loop: true,
          nav: true,
          navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"]
       });
    });
 </script>
+
+<?php
+
+function hitungJumlahTransaksiPelanggan($connection, $idPelanggan) {
+    $query = $connection->prepare("SELECT COUNT(*) as jumlah FROM transaksi WHERE id_pelanggan = ?");
+    $query->bind_param("i", $idPelanggan);
+    $query->execute();
+    $result = $query->get_result();
+    $row = $result->fetch_assoc();
+    return $row['jumlah'];
+}
+?>
