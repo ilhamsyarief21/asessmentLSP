@@ -19,18 +19,20 @@
 <style>
     /* CSS untuk elemen pencarian */
     #searchInput {
-        margin-top: 30px; /* Sesuaikan margin-top sesuai kebutuhan */
+        margin-top: 20px; /* Sesuaikan margin-top sesuai kebutuhan */
+        margin-bottom: 20px; /* Tambahkan margin-bottom untuk jarak ke bawah */
         width: 98%; /* Agar lebar input mencakup seluruh lebar kontainer */
         padding: 20px; /* Sesuaikan padding sesuai kebutuhan */
         box-sizing: border-box; /* Agar padding dan border termasuk dalam lebar dan tinggi elemen */
-        border: 2px solid #ccc; /* Warna border dan ketebalan sesuai kebutuhan */
-        border-radius: 5px; /* Agar sudut elemen lebih lembut */
+        border: 1px solid #ccc; /* Warna border dan ketebalan sesuai kebutuhan */
+        border-radius: 3px; /* Agar sudut elemen lebih lembut */
         margin-left: 16px;
     }
 
     /* Penambahan style untuk hasil pencarian */
     .col-xs-6.col-md-3 {
         transition: all 0.3s ease; /* Animasi transisi untuk perubahan display */
+        margin-bottom: 20px; /* Tambahkan margin-bottom pada thumbnail */
     }
 </style>
 
