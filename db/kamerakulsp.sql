@@ -267,7 +267,7 @@ ALTER TABLE `pelanggan`
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id_transaksi`),
   ADD KEY `fk_pelanggan` (`id_pelanggan`),
-  ADD KEY `fk_mobil` (`id_kameraku`);
+  ADD KEY `fk_kamera` (`id_kameraku`);
 
 --
 -- AUTO_INCREMENT for dumped tables
