@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,24 @@
     <!-- Fancybox JavaScript -->
     <script src="path/to/jquery.fancybox.min.js"></script>
 </head>
+<style>
+    /* CSS untuk elemen pencarian */
+    #searchInput {
+        margin-top: 30px; /* Sesuaikan margin-top sesuai kebutuhan */
+        width: 98%; /* Agar lebar input mencakup seluruh lebar kontainer */
+        padding: 20px; /* Sesuaikan padding sesuai kebutuhan */
+        box-sizing: border-box; /* Agar padding dan border termasuk dalam lebar dan tinggi elemen */
+        border: 2px solid #ccc; /* Warna border dan ketebalan sesuai kebutuhan */
+        border-radius: 5px; /* Agar sudut elemen lebih lembut */
+        margin-left: 16px;
+    }
+
+    /* Penambahan style untuk hasil pencarian */
+    .col-xs-6.col-md-3 {
+        transition: all 0.3s ease; /* Animasi transisi untuk perubahan display */
+    }
+</style>
+
 <body>
     <!-- Owl Carousel -->
     <div class="owl-carousel">
@@ -25,8 +44,11 @@
         <div class="item"><img src="assets/img/e.png" alt="Slide 5" style="width: 100%; height: auto;"></div>
     </div>
 
-     <!-- Baris Kamera -->
-     <div class="row">
+    <!-- Baris Kamera -->
+    <div class="row">
+        <!-- Input Pencarian -->
+        <input type="text" id="searchInput" placeholder="Cari kamera..." oninput="searchCamera()">
+
         <?php
         $batasTransaksi = 2; // Tetapkan batas transaksi
         // Sambungkan ke database dan ambil data kamera
@@ -40,10 +62,11 @@
             $queryTransaksi->execute();
             $resultTransaksi = $queryTransaksi->get_result();
             $jumlahTransaksiPelanggan = $resultTransaksi->fetch_assoc()['jumlah'];
-            
+
             // Nonaktifkan tombol jika pelanggan telah melebihi batas transaksi
             $isNonaktif = ($jumlahTransaksiPelanggan >= $batasTransaksi) ? "disabled" : "";
         ?>
+
             <div class="col-xs-6 col-md-3">
                 <!-- Kamera Thumbnail -->
                 <div class="thumbnail">
@@ -95,5 +118,25 @@
           });
        });
     </script>
+
+    <!-- Fungsi Pencarian JavaScript -->
+    <script type="text/javascript">
+        function searchCamera() {
+            var input, filter, cameras, camera, txtValue;
+            input = document.getElementById('searchInput');
+            filter = input.value.toUpperCase();
+            cameras = document.querySelectorAll('.col-xs-6.col-md-3');
+
+            cameras.forEach(function (camera) {
+                var cameraInfo = camera.textContent || camera.innerText;
+                if (cameraInfo.toUpperCase().indexOf(filter) > -1) {
+                    camera.style.display = "";
+                } else {
+                    camera.style.display = "none";
+                }
+            });
+        }
+    </script>
 </body>
+
 </html>
