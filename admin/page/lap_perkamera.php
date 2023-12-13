@@ -74,6 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <input type="text" value="<?= $row['merk'] ?>" class="form-control" disabled="on">
                                     </td>
                                 </tr>
+                                
                             </table>
                         </form>
                     <?php

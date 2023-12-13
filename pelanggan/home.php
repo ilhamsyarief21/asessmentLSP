@@ -24,7 +24,7 @@
     while ($row = $query->fetch_assoc()):
         // Cek apakah pelanggan telah melebihi batas transaksi
         $idPelanggan = isset($_SESSION['id_pelanggan']) ? $_SESSION['id_pelanggan'] : null;
-        $batasTransaksi = 2; // Tetapkan batas transaksi
+        $batasTransaksi = 5; // Tetapkan batas transaksi
         $jumlahTransaksiPelanggan = hitungJumlahTransaksiPelanggan($connection, $idPelanggan);
 
         // Nonaktifkan tombol jika pelanggan telah melebihi batas transaksi
