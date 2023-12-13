@@ -111,10 +111,10 @@ if (!isset($_SESSION["pelanggan"])) {
                                 <?php
                                     $dueDate = strtotime($data['tgl_ambil']);
                                     $returnDate = strtotime($data['tgl_kembali']);
-                                    $daysLate = max(0, floor(($returnDate - $dueDate) / (60 * 60 * 24))); // Calculate days late, minimum is 0
-                                    $penaltyPerDay = 40000; // Penalty amount per day
-                                    $penaltyAmount = $daysLate > 5 ? $penaltyPerDay * $daysLate : 0; // Apply penalty if more than 5 days late
-                                    $totalDenda = number_format($penaltyAmount, 2); // Format penalty amount
+                                    $daysLate = max(0, floor(($returnDate - $dueDate) / (60 * 60 * 24))); 
+                                    $penaltyPerDay = 40000; 
+                                    $penaltyAmount = $daysLate > 5 ? $penaltyPerDay * $daysLate : 0; 
+                                    $totalDenda = number_format($penaltyAmount, 2); 
                                 ?>
 
                                 <tr>

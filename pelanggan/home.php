@@ -16,6 +16,7 @@
     <div class="item"><img src="assets/img/e.png" alt="Slide 5" style="width: 100%; height: auto;"></div>
 </div>
 
+
 <!-- Baris Kamear -->
 <div class="row">
     <?php
