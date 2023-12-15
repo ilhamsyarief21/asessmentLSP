@@ -1,4 +1,4 @@
-### <samp>&gt; Hi there, Welcome! <a href="https://gkassym.netlify.app" target="_blank">To Kameraku!</a> <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25"> </samp>
+## <samp>&gt; Hi there, Welcome! <a href="https://gkassym.netlify.app" target="_blank">To Kameraku!</a> <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25"> </samp>
 ## Kelompok : Kameraku
 
 ## Tim : TimKamera
