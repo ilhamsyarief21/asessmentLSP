@@ -36,16 +36,24 @@ Admin :
   ![image](https://github.com/ilhamsyarief21/asessmentLSP/assets/115606564/da19a47a-3d9d-4a5f-9c0d-d005f567c800)
 ----------------------------------------------------------------------------------
  Fitur User :
-- User dapat mendaftarkan akun
-- User dapat melakukan login dengan akunnya sendiri
 - User dapat melakukan filter jenis kamera
+  ![image](https://github.com/ilhamsyarief21/asessmentLSP/assets/115606564/c99aad49-296e-4bb7-a95b-75e2f97a8b06)
 - User dapat melakukan filter merk kamera
-- User dapat melakukan kamera kamera
+  ![image](https://github.com/ilhamsyarief21/asessmentLSP/assets/115606564/bfa15a78-1ea4-403a-8304-578e0322aa21)
+- User dapat melakukan pencarian kamera
+  ![image](https://github.com/ilhamsyarief21/asessmentLSP/assets/115606564/73101fe9-769c-4656-b3f0-0a9f206e1332)
 - User dapat melakukan penyewaan kamera berdasarkan lama sewa, tanggal
-- User dapat melakukan penyewaan kamera beserta fotografer
+  ![image](https://github.com/ilhamsyarief21/asessmentLSP/assets/115606564/35894970-d786-4640-b30d-31066febce2d)
 - User dapat melihat invoice transaksi berhasil
+  ![image](https://github.com/ilhamsyarief21/asessmentLSP/assets/115606564/33c3d7cb-c65e-4d0d-95cc-33ddf16e4b33)
 - User dapat melihat riwayat transaksi
+  ![image](https://github.com/ilhamsyarief21/asessmentLSP/assets/115606564/6ecf8fa0-0bef-44d9-8071-8134d6ff8f81)
 - User dapat melihat riwayat denda
+  ![image](https://github.com/ilhamsyarief21/asessmentLSP/assets/115606564/aaef084d-b6ab-4da1-8c09-5659d5808d54)
 - User dapat mengatur foto profil
+  ![image](https://github.com/ilhamsyarief21/asessmentLSP/assets/115606564/903b3eda-e2a8-4416-ac33-767d869e7449)
 - User dapat melihat detail transaksi
+  ![image](https://github.com/ilhamsyarief21/asessmentLSP/assets/115606564/8fe2baae-6c90-43a1-8c43-6206b053792b)
 - User dapat mengunduh riwayat transaksi dan denda
+  ![image](https://github.com/ilhamsyarief21/asessmentLSP/assets/115606564/2b56da86-9caa-4140-a442-619952c9ab22)
+
