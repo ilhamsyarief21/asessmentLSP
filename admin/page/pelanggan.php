@@ -23,7 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         $sql .= " WHERE id_pelanggan='$id_pelanggan'";
     } else {
-        $sql = "INSERT INTO pelanggan VALUES (NULL, '$no_ktp', '$nama', '$email', '$alamat', '$no_telp', '$username', '$password')";
+        // Sesuaikan kolom sesuai dengan struktur tabel pelanggan
+        $sql = "INSERT INTO pelanggan (no_ktp, nama, email, alamat, no_telp, username, password) VALUES ('$no_ktp', '$nama', '$email', '$alamat', '$no_telp', '$username', '$password')";
     }
 
     if ($connection->query($sql)) {
