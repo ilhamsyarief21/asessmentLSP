@@ -1,5 +1,15 @@
-Nama Kelompok : Kameraku
-Nama Team : Tim Kamera
+## Kelompok : Kameraku
+
+## Tim : TimKamera
+
+## Project : Kameraku (Penyewaan Kamera)
+
+## Anggota Kelompok
+
+Nama Kelompok  | NIM
+------------- | -------------
+Ilham Syarief Roem Mohamad  | 1202204008
+Muhammad Habibi Akmal  | 1202204284
 
 Skema Project Database :
 ![image](https://github.com/ilhamsyarief21/asessmentLSP/assets/115606564/1bef7a09-f406-443f-b294-f274ba998ac7)
