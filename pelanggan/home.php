@@ -44,6 +44,17 @@
     font-size: 14px;
     }
 
+    #merkFilter {
+    margin-top: 20px;
+    margin-right: 10px; /* Sesuaikan margin-right sesuai kebutuhan */
+    margin-left: 17px; /* Sesuaikan margin-left sesuai kebutuhan */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+
     /* Gaya untuk input pencarian */
     #searchInput {
         margin-top: 20px;
@@ -135,6 +146,18 @@
                     <option value="<?= $jenis['nama'] ?>"><?= $jenis['nama'] ?></option>
                 <?php endwhile; ?>
             </select>
+            <!-- Dropdown untuk memilih jenis merk -->
+            <select id="merkFilter" onchange="filterByMerk()">
+                <option value="">Semua Merk</option>
+                <!-- Isi opsi dropdown dengan merk kamera yang ada -->
+                <?php
+                $queryMerk = $connection->query("SELECT DISTINCT merk FROM kameraku");
+                while ($merk = $queryMerk->fetch_assoc()):
+                ?>
+                    <option value="<?= $merk['merk'] ?>"><?= $merk['merk'] ?></option>
+                <?php endwhile; ?>
+            </select>
+
         <!-- Input Pencarian -->
         <input type="text" id="searchInput" placeholder="Cari kamera..." oninput="searchCamera()">
 
@@ -238,7 +261,26 @@
                 }
             });
         }
+        
+
     </script>
+    <script type="text/javascript">
+    function filterByMerk() {
+        var selectedMerk = document.getElementById("merkFilter").value.toUpperCase();
+        var cameras = document.querySelectorAll('.col-xs-6.col-md-3');
+
+        cameras.forEach(function (camera) {
+            var merkKamera = camera.querySelector('h5').textContent.toUpperCase();
+            if (selectedMerk === '' || merkKamera.indexOf(selectedMerk) > -1) {
+                camera.style.display = "";
+            } else {
+                camera.style.display = "none";
+            }
+        });
+    }
+</script>
+
+    
 </body>
 
 </html>
