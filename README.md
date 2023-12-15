@@ -19,6 +19,7 @@ Admin :
 - Admin dapat melihat laporan penyewaan perperiode
 - Admin dapat melihat laporan yang penyewaan yang paling laris
 - Admin dapat melihat laporan total harga denda
+----------------------------------------------------------------------------------
  User :
 - User dapat mendaftarkan akun
 - User dapat melakukan login dengan akunnya sendiri
