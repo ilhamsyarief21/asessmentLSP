@@ -23,6 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Query error!";
     }
 }
+// Check if "Forgot Password" link is clicked
+if (isset($_POST['forgot_password'])) {
+    header('location: forgot_password.php');
+    exit();
+}
+?>
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,6 +95,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <input type="password" name="password" class="form-control" id="password" placeholder="Password">
                                 </div>
                                 <button type="submit" class="btn btn-info btn-block">Login</button>
+                                <a href="#" onclick="redirectToForgotPassword()" class="btn btn-link btn-block">Forgot Password?</a>
+                                    <script>
+                                        function redirectToForgotPassword() {
+                                            window.location.href = 'forgot_password.php';
+                                        }
+                                    </script>
+
+
+                                
                             </form>
                         </div>
                         <div class="panel-footer">
