@@ -1,6 +1,9 @@
 Nama Kelompok : Kameraku
 Nama Team : Tim Kamera
 
+Skema Project Database :
+![image](https://github.com/ilhamsyarief21/asessmentLSP/assets/115606564/1bef7a09-f406-443f-b294-f274ba998ac7)
+
 Fitur :
 Admin : 
 - Admin dapat menambahkan admin
