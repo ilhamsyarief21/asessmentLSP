@@ -20,7 +20,7 @@ Admin :
 - Admin dapat melihat laporan yang penyewaan yang paling laris
 - Admin dapat melihat laporan total harga denda
 ----------------------------------------------------------------------------------
- User :
+ Fitur User :
 - User dapat mendaftarkan akun
 - User dapat melakukan login dengan akunnya sendiri
 - User dapat melakukan filter jenis kamera
