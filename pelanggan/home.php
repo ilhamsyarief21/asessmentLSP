@@ -34,6 +34,82 @@
         transition: all 0.3s ease; /* Animasi transisi untuk perubahan display */
         margin-bottom: 20px; /* Tambahkan margin-bottom pada thumbnail */
     }
+    #jenisFilter {
+    margin-top: 20px;
+    margin-right: 10px; /* Sesuaikan margin-right sesuai kebutuhan */
+    margin-left: 17px; /* Sesuaikan margin-left sesuai kebutuhan */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    }
+
+    /* Gaya untuk input pencarian */
+    #searchInput {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 98%;
+        padding: 20px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin-left: 16px;
+    }
+
+    /* Gaya untuk hasil pencarian */
+    .col-xs-6.col-md-3 {
+        transition: all 0.3s ease;
+        margin-bottom: 20px;
+    }
+
+    /* Gaya untuk label status kamera */
+    .label {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    /* Gaya untuk tombol Sewa */
+    .btn-primary {
+        background-color: #428bca;
+        color: #fff;
+        border: 1px solid #357ebd;
+        padding: 8px 15px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    /* Gaya untuk tombol Sewa saat dinonaktifkan */
+    .btn-primary[disabled] {
+        background-color: #d9edf7;
+        color: #31708f;
+        border: 1px solid #bce8f1;
+        cursor: not-allowed;
+    }
+
+    /* Gaya untuk thumbnail kamera */
+    .thumbnail {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Gaya untuk owl carousel */
+    .owl-carousel {
+        margin-bottom: 20px;
+    }
+
+    /* Gaya untuk owl carousel navigation */
+    .owl-nav i {
+        font-size: 30px;
+        color: #428bca;
+    }
+
+    /* Gaya untuk owl carousel navigation saat dinonaktifkan */
+    .owl-nav [class*=owl-]:hover {
+        background-color: transparent;
+        color: #428bca;
+    }
 </style>
 
 <body>
@@ -48,6 +124,17 @@
 
     <!-- Baris Kamera -->
     <div class="row">
+        <!-- Dropdown untuk memilih jenis kamera -->
+            <select id="jenisFilter" onchange="filterByJenis()">
+                <option value="">Semua Jenis</option>
+                <!-- Isi opsi dropdown dengan jenis kamera yang ada -->
+                <?php
+                $queryJenis = $connection->query("SELECT DISTINCT nama FROM jenis");
+                while ($jenis = $queryJenis->fetch_assoc()):
+                ?>
+                    <option value="<?= $jenis['nama'] ?>"><?= $jenis['nama'] ?></option>
+                <?php endwhile; ?>
+            </select>
         <!-- Input Pencarian -->
         <input type="text" id="searchInput" placeholder="Cari kamera..." oninput="searchCamera()">
 
@@ -132,6 +219,19 @@
             cameras.forEach(function (camera) {
                 var cameraInfo = camera.textContent || camera.innerText;
                 if (cameraInfo.toUpperCase().indexOf(filter) > -1) {
+                    camera.style.display = "";
+                } else {
+                    camera.style.display = "none";
+                }
+            });
+        }
+        function filterByJenis() {
+            var selectedJenis = document.getElementById('jenisFilter').value.toUpperCase();
+            var cameras = document.querySelectorAll('.col-xs-6.col-md-3');
+
+            cameras.forEach(function (camera) {
+                var jenisKamera = camera.querySelector('h5').textContent.toUpperCase();
+                if (selectedJenis === '' || jenisKamera.indexOf(selectedJenis) > -1) {
                     camera.style.display = "";
                 } else {
                     camera.style.display = "none";
